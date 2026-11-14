@@ -1503,13 +1503,19 @@ body {
   padding: 30px 34px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
+}
+
+.contact-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .contact-lead {
   font-size: 13.5px;
   color: var(--text-muted);
-  margin-top: -12px;
+  margin-top: 6px;
 }
 
 .contact-body {
