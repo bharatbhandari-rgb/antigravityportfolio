@@ -1579,14 +1579,23 @@ body {
 }
 
 .qr-code {
-  width: 80px;
-  height: 80px;
-  background: #110d0b;
+  width: 90px;
+  height: 90px;
+  background: #fff;
   border-radius: 6px;
   padding: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+}
+
+.qr-code canvas,
+.qr-code img {
+  width: 82px !important;
+  height: 82px !important;
+  display: block;
+  border-radius: 3px;
 }
 
 .qr-svg {

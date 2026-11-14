@@ -21,6 +21,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="style.css">
+  <!-- QR Code library for real scannable LinkedIn QR -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
 
@@ -859,35 +861,10 @@
               </div>
             </div>
 
-            <!-- Stylized QR Code Box for LinkedIn -->
+            <!-- Real Scannable QR Code for LinkedIn -->
             <a href="https://linkedin.com/in/bharatbhandari506" target="_blank" rel="noopener noreferrer" class="qr-box-link" title="Open LinkedIn Profile">
               <div class="qr-box">
-                <div class="qr-code">
-                  <svg viewBox="0 0 100 100" class="qr-svg">
-                    <rect x="5" y="5" width="26" height="26" rx="4" fill="none" stroke="#ff6b4a" stroke-width="4"/>
-                    <rect x="11" y="11" width="14" height="14" rx="2" fill="#ff6b4a"/>
-
-                    <rect x="69" y="5" width="26" height="26" rx="4" fill="none" stroke="#ff6b4a" stroke-width="4"/>
-                    <rect x="75" y="11" width="14" height="14" rx="2" fill="#ff6b4a"/>
-
-                    <rect x="5" y="69" width="26" height="26" rx="4" fill="none" stroke="#ff6b4a" stroke-width="4"/>
-                    <rect x="11" y="75" width="14" height="14" rx="2" fill="#ff6b4a"/>
-
-                    <!-- Data modules pattern -->
-                    <rect x="37" y="10" width="8" height="8" fill="#ff8c70"/>
-                    <rect x="50" y="15" width="6" height="12" fill="#ff8c70"/>
-                    <rect x="10" y="38" width="12" height="6" fill="#ff8c70"/>
-                    <rect x="28" y="38" width="6" height="6" fill="#ff8c70"/>
-                    <rect x="42" y="36" width="16" height="16" rx="2" fill="#ff6b4a"/>
-                    <rect x="65" y="38" width="8" height="18" fill="#ff8c70"/>
-                    <rect x="80" y="44" width="10" height="8" fill="#ff8c70"/>
-                    <rect x="38" y="60" width="10" height="14" fill="#ff8c70"/>
-                    <rect x="56" y="58" width="8" height="8" fill="#ff8c70"/>
-                    <rect x="68" y="68" width="12" height="12" fill="#ff8c70"/>
-                    <rect x="86" y="70" width="8" height="8" fill="#ff8c70"/>
-                    <rect x="52" y="80" width="10" height="8" fill="#ff8c70"/>
-                  </svg>
-                </div>
+                <div class="qr-code" id="linkedin-qr"></div>
                 <span class="qr-label">LINKEDIN QR</span>
               </div>
             </a>
@@ -1009,5 +986,26 @@
   </div>
 
   <script src="script.js"></script>
+
+  <!-- Generate real scannable LinkedIn QR code -->
+  <script>
+    (function() {
+      var el = document.getElementById('linkedin-qr');
+      if (!el) return;
+      if (typeof QRCode !== 'undefined') {
+        new QRCode(el, {
+          text: 'https://linkedin.com/in/bharatbhandari506',
+          width: 82,
+          height: 82,
+          colorDark: '#1a0a06',
+          colorLight: '#ffffff',
+          correctLevel: QRCode.CorrectLevel.M
+        });
+      } else {
+        // Fallback: show LinkedIn icon if library fails to load
+        el.innerHTML = '<svg viewBox="0 0 24 24" fill="#0a66c2" width="60" height="60"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>';
+      }
+    })();
+  </script>
 </body>
 </html>
